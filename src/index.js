@@ -11,10 +11,15 @@ const reducer = combineReducers({
 });
 
 function configureStore(initialState) {
-  return createStore(reducer, initialState);
+  return createStore(
+    reducer,
+    initialState,
+    global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+  );
 }
 
 const store = configureStore({});
+console.log(global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__);
 
 render(
   <Provider store={ store }>
